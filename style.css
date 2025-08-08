@@ -4,6 +4,8 @@
     --light-blue: #64ffda;
     --text-color: #ccd6f6;
     --highlight: #1e90ff;
+    --guitar-brown: #8B4513;
+    --guitar-yellow: #FFD700;
 }
 
 * {
@@ -21,16 +23,22 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    background-blend-mode: overlay;
+    background-color: rgba(10, 25, 47, 0.9);
 }
 
+/* Header melhorado com efeito de palco */
 header {
-    background: linear-gradient(to right, var(--dark-blue), rgba(10, 25, 47, 0.8));
+    background: linear-gradient(135deg, var(--dark-blue) 0%, rgba(23, 42, 69, 0.9) 100%);
     text-align: center;
-    padding: 2rem 0;
+    padding: 3rem 0;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid var(--light-blue);
 }
 
+/* Efeito de cordas de guitarra animadas */
 .guitar-strings {
     position: absolute;
     top: 0;
@@ -41,40 +49,81 @@ header {
         to bottom,
         transparent,
         transparent 20px,
-        rgba(100, 255, 218, 0.2) 20px,
-        rgba(100, 255, 218, 0.2) 21px
+        rgba(100, 255, 218, 0.3) 20px,
+        rgba(100, 255, 218, 0.3) 21px
     );
     pointer-events: none;
+    animation: string-vibration 3s ease-in-out infinite;
+}
+
+@keyframes string-vibration {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(2px); }
 }
 
 header h1 {
     font-family: 'Roboto Slab', serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 0.5rem;
     color: var(--light-blue);
+    text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
 }
 
 header p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
+/* Navegação estilizada como trastes de guitarra */
 nav {
-    background-color: var(--medium-blue);
-    padding: 1rem 0;
+    background: linear-gradient(to right, 
+        var(--medium-blue) 0%, 
+        #1a3155 50%, 
+        var(--medium-blue) 100%);
+    padding: 1.2rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
+    border-top: 2px solid var(--guitar-brown);
+    border-bottom: 2px solid var(--guitar-brown);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 nav li {
-    margin: 0 1.5rem;
+    margin: 0 1.8rem;
+    position: relative;
+}
+
+nav li::after {
+    content: '';
+    position: absolute;
+    right: -1.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(to bottom, 
+        transparent 0%, 
+        var(--guitar-yellow) 50%, 
+        transparent 100%);
+}
+
+nav li:last-child::after {
+    display: none;
 }
 
 nav a {
@@ -82,186 +131,426 @@ nav a {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
-    transition: color 0.3s;
+    transition: all 0.3s;
     display: flex;
     align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
 }
 
 nav a:hover {
     color: var(--light-blue);
+    background-color: rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
 }
 
 nav i {
-    margin-right: 0.5rem;
+    margin-right: 0.7rem;
+    font-size: 1.2rem;
 }
 
+/* Seções com efeito de palco */
 section {
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, 
+        transparent 0%, 
+        var(--light-blue) 50%, 
+        transparent 100%);
 }
 
 h2 {
     font-family: 'Roboto Slab', serif;
     color: var(--light-blue);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, 
+        transparent 0%, 
+        var(--light-blue) 50%, 
+        transparent 100%);
 }
 
 h2 i {
-    margin-right: 0.8rem;
+    margin-right: 1rem;
+    color: var(--highlight);
 }
 
+/* Hero section melhorada */
 #hero {
     text-align: center;
-    padding: 6rem 2rem;
+    padding: 8rem 2rem;
     position: relative;
+    overflow: hidden;
 }
 
 .hero-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    animation: fadeInDown 1s ease;
 }
 
 .hero-content p {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     max-width: 800px;
-    margin: 0 auto 2rem;
+    margin: 0 auto 3rem;
+    animation: fadeIn 1.5s ease;
 }
 
+/* Animação da guitarra aprimorada */
 .guitar-animation {
-    margin: 2rem auto;
+    margin: 3rem auto;
     position: relative;
-    width: 200px;
-    height: 150px;
+    width: 250px;
+    height: 180px;
+    animation: float 3s ease-in-out infinite;
 }
 
 .guitar-body {
-    width: 200px;
-    height: 120px;
+    width: 250px;
+    height: 150px;
     background-color: transparent;
-    border: 3px solid var(--light-blue);
+    border: 4px solid var(--light-blue);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     position: relative;
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+}
+
+.guitar-body::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--light-blue);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .guitar-neck {
-    width: 20px;
-    height: 150px;
-    background-color: #8B4513;
+    width: 25px;
+    height: 180px;
+    background: linear-gradient(to right, 
+        var(--guitar-brown) 0%, 
+        #6B3100 50%, 
+        var(--guitar-brown) 100%);
     position: absolute;
-    top: -150px;
-    left: 90px;
-    border-radius: 5px;
+    top: -180px;
+    left: 113px;
+    border-radius: 8px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
+.guitar-neck::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--guitar-yellow);
+    top: 30%;
+    left: 0;
+}
+
+.guitar-neck::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--guitar-yellow);
+    top: 60%;
+    left: 0;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Álbum de fotos aprimorado */
 .photo-album {
-    background-color: rgba(23, 42, 69, 0.8);
-    border-radius: 10px;
+    background-color: rgba(23, 42, 69, 0.9);
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(100, 255, 218, 0.2);
 }
 
 .album-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
     margin-top: 2rem;
 }
 
 .photo-frame {
     background-color: var(--dark-blue);
     border: 2px solid var(--light-blue);
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 .photo-frame:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(100, 255, 218, 0.2);
+    border-color: var(--highlight);
 }
 
 .photo-frame img {
     width: 100%;
-    height: 250px;
+    height: 280px;
     object-fit: cover;
+    transition: all 0.5s ease;
+    filter: brightness(0.9);
+}
+
+.photo-frame:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 .photo-caption {
-    padding: 1rem;
+    padding: 1.2rem;
     text-align: center;
     font-weight: bold;
-    background-color: var(--medium-blue);
+    background: linear-gradient(to right, 
+        var(--medium-blue) 0%, 
+        #1a3155 100%);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border-top: 1px solid rgba(100, 255, 218, 0.3);
 }
 
+.photo-frame:hover .photo-caption {
+    background: linear-gradient(to right, 
+        var(--highlight) 0%, 
+        #1a7cff 100%);
+    color: var(--dark-blue);
+}
+
+/* Efeito de luz no hover */
+.photo-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, 
+        transparent 0%, 
+        rgba(100, 255, 218, 0.15) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.photo-frame:hover::before {
+    opacity: 1;
+}
+
+/* Paginação para o álbum */
+.album-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    background-color: var(--medium-blue);
+    color: var(--text-color);
+    border: 1px solid var(--light-blue);
+    padding: 0.7rem 1.3rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    min-width: 45px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.page-btn:hover {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+}
+
+.page-btn.active {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    font-weight: bold;
+    border-color: var(--highlight);
+    box-shadow: 0 0 0 2px var(--highlight);
+    transform: translateY(-3px);
+}
+
+/* Seção da carta melhorada */
 .letter {
     position: relative;
-    background-color: rgba(10, 25, 47, 0.9);
-    border-radius: 10px;
-    padding: 3rem;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, 
+        rgba(10, 25, 47, 0.95) 0%, 
+        rgba(15, 30, 55, 0.95) 100%);
+    border-radius: 15px;
+    padding: 4rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    overflow: hidden;
+}
+
+.letter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%2364ffda" fill-opacity="0.03" d="M30,10 Q50,5 70,10 Q95,15 90,40 Q85,65 70,80 Q50,95 30,80 Q15,65 10,40 Q5,15 30,10 Z"/></svg>');
+    background-size: 200px;
+    opacity: 0.5;
 }
 
 .letter-content {
     max-width: 800px;
     margin: 0 auto;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.8;
+    position: relative;
+    z-index: 1;
 }
 
 .letter-content p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
+    text-align: justify;
+    hyphens: auto;
 }
 
 .signature {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--light-blue);
     text-align: right;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    text-shadow: 0 0 5px rgba(100, 255, 218, 0.5);
 }
 
 .guitar-doodle {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 100px;
-    height: 100px;
+    bottom: 30px;
+    right: 30px;
+    width: 120px;
+    height: 120px;
     background-image: url('images/guitar-icon.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.3;
+    opacity: 0.2;
+    animation: float 4s ease-in-out infinite;
 }
 
+/* Seção musical aprimorada */
 .music-section {
     text-align: center;
+    background: linear-gradient(135deg, 
+        rgba(23, 42, 69, 0.9) 0%, 
+        rgba(28, 47, 74, 0.9) 100%);
+    border-radius: 15px;
+    padding: 4rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(100, 255, 218, 0.2);
 }
 
 .music-content {
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
 }
 
 .music-content p {
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--light-blue);
 }
 
+/* Vinil animado melhorado */
 .vinyl-record {
     position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 2rem auto;
+    width: 250px;
+    height: 250px;
+    margin: 3rem auto;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
 .vinyl {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: linear-gradient(135deg, #333 0%, #000 100%);
+    background: 
+        radial-gradient(circle at center, 
+            #222 0%, 
+            #000 70%),
+        repeating-radial-gradient(circle at center, 
+            transparent 0%, 
+            transparent 3%, 
+            rgba(255,255,255,0.1) 3%, 
+            rgba(255,255,255,0.1) 4%);
     position: relative;
-    animation: spin 10s linear infinite;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: spin 8s linear infinite;
+}
+
+.vinyl::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: 
+        radial-gradient(circle at center, 
+            transparent 40%, 
+            rgba(255,255,255,0.05) 40%, 
+            rgba(255,255,255,0.05) 42%, 
+            transparent 42%),
+        linear-gradient(45deg, 
+            transparent 45%, 
+            rgba(255,255,255,0.1) 45%, 
+            rgba(255,255,255,0.1) 55%, 
+            transparent 55%),
+        linear-gradient(-45deg, 
+            transparent 45%, 
+            rgba(255,255,255,0.1) 45%, 
+            rgba(255,255,255,0.1) 55%, 
+            transparent 55%);
 }
 
 .vinyl-center {
@@ -269,50 +558,202 @@ h2 i {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background-color: var(--light-blue);
     border-radius: 50%;
-    border: 3px solid white;
+    border: 4px solid white;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+    z-index: 2;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.vinyl-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: var(--highlight);
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
 }
 
+/* Footer melhorado */
 footer {
-    background-color: var(--medium-blue);
+    background: linear-gradient(to right, 
+        var(--dark-blue) 0%, 
+        #0e1f3a 100%);
     text-align: center;
-    padding: 2rem 0;
-    margin-top: 3rem;
+    padding: 3rem 0;
+    margin-top: 5rem;
+    border-top: 1px solid rgba(100, 255, 218, 0.3);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, 
+        transparent 0%, 
+        var(--light-blue) 50%, 
+        transparent 100%);
 }
 
 footer p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.footer-guitars {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .footer-guitars i {
-    margin: 0 0.5rem;
     color: var(--light-blue);
-    font-size: 1.5rem;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.footer-guitars i:nth-child(1) { animation-delay: 0s; }
+.footer-guitars i:nth-child(2) { animation-delay: 0.5s; }
+.footer-guitars i:nth-child(3) { animation-delay: 1s; }
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { 
+        opacity: 0; 
+        transform: translate(-50%, -20px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .album-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    
+    .letter {
+        padding: 3rem;
+    }
 }
 
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    header h1 {
+        font-size: 2.2rem;
     }
     
     nav li {
-        margin: 0.5rem 0;
+        margin: 0 1rem;
+    }
+    
+    nav li::after {
+        right: -1rem;
+    }
+    
+    section {
+        padding: 4rem 1.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .album-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.8rem;
+    }
+    
+    .photo-frame img {
+        height: 220px;
+    }
+    
+    .letter {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .music-section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 2rem 1rem;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    header p {
+        font-size: 1.1rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    nav li {
+        margin: 0.3rem 0;
+    }
+    
+    nav li::after {
+        display: none;
     }
     
     .album-grid {
         grid-template-columns: 1fr;
     }
     
-    .letter {
-        padding: 2rem 1rem;
+    .guitar-animation {
+        width: 180px;
+        height: 130px;
+    }
+    
+    .guitar-body {
+        width: 180px;
+        height: 110px;
+    }
+    
+    .guitar-neck {
+        width: 20px;
+        height: 130px;
+        left: 80px;
+        top: -130px;
+    }
+    
+    .vinyl-record {
+        width: 200px;
+        height: 200px;
     }
 }

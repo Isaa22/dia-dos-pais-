@@ -756,4 +756,57 @@ footer p {
         width: 200px;
         height: 200px;
     }
+    /* Efeito de confete */
+.confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    z-index: 9999;
+}
+
+@keyframes confetti-fall {
+    to {
+        top: 100vh;
+        transform: rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Efeito de carregamento */
+.photo-frame img {
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+.photo-frame img.loaded {
+    opacity: 1;
+}
+
+/* Menu ativo */
+nav a.active {
+    color: var(--light-blue) !important;
+    background-color: rgba(100, 255, 218, 0.1) !important;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+}
+
+/* Disco de vinil pausado */
+.vinyl.paused {
+    animation-play-state: paused;
+}
+
+/* Transição de entrada */
+body:not(.loaded) #hero,
+body:not(.loaded) section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+body.loaded #hero,
+body.loaded section {
+    opacity: 1;
+    transform: translateY(0);
+}
 }

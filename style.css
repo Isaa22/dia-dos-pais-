@@ -1,0 +1,318 @@
+:root {
+    --dark-blue: #0a192f;
+    --medium-blue: #172a45;
+    --light-blue: #64ffda;
+    --text-color: #ccd6f6;
+    --highlight: #1e90ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--dark-blue);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+header {
+    background: linear-gradient(to right, var(--dark-blue), rgba(10, 25, 47, 0.8));
+    text-align: center;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.guitar-strings {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 20px,
+        rgba(100, 255, 218, 0.2) 20px,
+        rgba(100, 255, 218, 0.2) 21px
+    );
+    pointer-events: none;
+}
+
+header h1 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--light-blue);
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+nav {
+    background-color: var(--medium-blue);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav li {
+    margin: 0 1.5rem;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+nav a:hover {
+    color: var(--light-blue);
+}
+
+nav i {
+    margin-right: 0.5rem;
+}
+
+section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-family: 'Roboto Slab', serif;
+    color: var(--light-blue);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+h2 i {
+    margin-right: 0.8rem;
+}
+
+#hero {
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+}
+
+.hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.guitar-animation {
+    margin: 2rem auto;
+    position: relative;
+    width: 200px;
+    height: 150px;
+}
+
+.guitar-body {
+    width: 200px;
+    height: 120px;
+    background-color: transparent;
+    border: 3px solid var(--light-blue);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+}
+
+.guitar-neck {
+    width: 20px;
+    height: 150px;
+    background-color: #8B4513;
+    position: absolute;
+    top: -150px;
+    left: 90px;
+    border-radius: 5px;
+}
+
+.photo-album {
+    background-color: rgba(23, 42, 69, 0.8);
+    border-radius: 10px;
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.photo-frame {
+    background-color: var(--dark-blue);
+    border: 2px solid var(--light-blue);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.photo-frame:hover {
+    transform: translateY(-10px);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.photo-caption {
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--medium-blue);
+}
+
+.letter {
+    position: relative;
+    background-color: rgba(10, 25, 47, 0.9);
+    border-radius: 10px;
+    padding: 3rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.letter-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.letter-content p {
+    margin-bottom: 1.5rem;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--light-blue);
+    text-align: right;
+    margin-top: 2rem;
+}
+
+.guitar-doodle {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    background-image: url('images/guitar-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+}
+
+.music-section {
+    text-align: center;
+}
+
+.music-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.music-content p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+.vinyl-record {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 2rem auto;
+}
+
+.vinyl {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #333 0%, #000 100%);
+    position: relative;
+    animation: spin 10s linear infinite;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.vinyl-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: var(--light-blue);
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+footer {
+    background-color: var(--medium-blue);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+footer p {
+    margin-bottom: 1rem;
+}
+
+.footer-guitars i {
+    margin: 0 0.5rem;
+    color: var(--light-blue);
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        margin: 0.5rem 0;
+    }
+    
+    .album-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .letter {
+        padding: 2rem 1rem;
+    }
+}
